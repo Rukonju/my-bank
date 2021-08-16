@@ -5,14 +5,15 @@ function getInputValue(inputId){
     input.value='';
     return amount;  
 }
-/* function totalBalance(){
-
-} */
+function updateTranxiction(fieldId, depositAmount){
+    debugger;
+    const tranxiction=document.getElementById(fieldId);
+    const tranxictionAmount=parseFloat(tranxiction.innerText);
+    tranxiction.innerText=tranxictionAmount+depositAmount;
+}
 document.getElementById("deposit-btn").addEventListener('click',function() {
     const depositAmount=getInputValue("deposit");
-    const inialDeposit=document.getElementById("total-deposit");
-    const initialDepositAmount=parseFloat(inialDeposit.innerText);
-    inialDeposit.innerText=initialDepositAmount+depositAmount;
+    updateTranxiction("total-deposit",depositAmount);
     const  initialBalance=document.getElementById("total");
     const  initialBalanceValue=parseFloat(initialBalance.innerText);
     initialBalance.innerText=depositAmount+initialBalanceValue;  
@@ -20,9 +21,7 @@ document.getElementById("deposit-btn").addEventListener('click',function() {
 //withdraw
 document.getElementById("withdraw-btn").addEventListener('click',function() {
     const withdrawAmount=getInputValue("withdraw");
-    const initialWithdraw=document.getElementById('total-withdraw');
-    const initialWithdrawValue=parseFloat(initialWithdraw.innerText);
-    initialWithdraw.innerText= initialWithdrawValue+withdrawAmount;
+    updateTranxiction('total-withdraw',withdrawAmount);
     const initialBalance=document.getElementById("total");
     const initialBalanceValue=parseFloat(initialBalance.innerText);
     initialBalance.innerText=initialBalanceValue-withdrawAmount;
